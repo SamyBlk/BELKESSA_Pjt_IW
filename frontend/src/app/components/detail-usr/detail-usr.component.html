@@ -1,0 +1,16 @@
+<div>
+  <label> Id : </label> <input [(ngModel)]="users.id" name="id" />
+  <label> Nom : </label> <input [(ngModel)]="users.name" name="name" />
+  <label> Email : </label> <input [(ngModel)]="users.email" name="email" />
+  <label> Role :</label> <input [(ngModel)]="users.role" name="role" />
+</div>
+
+<p>detail-usr</p>
+<ul>
+  <li>Id: {{ users.id }}</li>
+  <li>Name: {{ users.name }}</li>
+  <li>Email: {{ users.email }}</li>
+  <li>Role: {{ users.role }}</li>
+</ul>
+
+<button [disabled]="etatUsr" (click) = "modifierUsr()">Modifier Utilisateur</button>

@@ -1,0 +1,8 @@
+<div>
+  <p>Date: {{ appointment?.date }}</p>
+  <p>Time: {{ appointment?.time }}</p>
+  <p>Notification Method: {{ notificationMethod }}</p>
+  <p>Notification Value: {{ notificationValue }}</p>
+  <button (click)="confirmAppointment()">Confirmer</button>
+  <button (click)="cancelAppointment()">Annuler</button>
+</div>

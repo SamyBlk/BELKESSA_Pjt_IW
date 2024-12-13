@@ -1,0 +1,9 @@
+<form (ngSubmit)="bookAppointment()">
+  <label>Date:</label>
+  <input [(ngModel)]="date" name="date" required>
+  <label>Time:</label>
+  <input [(ngModel)]="time" name="time" required>
+  <label>Professional ID:</label>
+  <input [(ngModel)]="professionalId" name="professionalId" required>
+  <button type="submit">Prendre un rendez-vous</button>
+</form>

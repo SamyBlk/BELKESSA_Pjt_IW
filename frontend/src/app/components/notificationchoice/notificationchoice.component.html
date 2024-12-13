@@ -1,0 +1,9 @@
+<button (click)="chooseNotification('Tel')">Tel</button>
+<button (click)="chooseNotification('Email')">Email</button>
+
+<div *ngIf="notificationMethod">
+  <label *ngIf="notificationMethod === 'Tel'">Enter your phone number:</label>
+  <label *ngIf="notificationMethod === 'Email'">Enter your email:</label>
+  <input [(ngModel)]="notificationMethodValue" name="notificationMethodValue" required>
+  <button (click)="confirmNotification()">OK</button>
+</div>
