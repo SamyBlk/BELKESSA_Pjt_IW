@@ -5,6 +5,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 import org.springframework.context.annotation.Bean;
+import org.springframework.web.reactive.config.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @SpringBootApplication
 public class GatewayserviceApplication {
@@ -20,5 +22,19 @@ public class GatewayserviceApplication {
 				.route("availabilityService", r -> r.path("/availabilities/**").uri("lb://availabilityservice"))
 				.route("appointmentService", r -> r.path("/appointments/**").uri("lb://appointmentservice"))
 				.build();
+	}
+
+	@Bean
+	public WebMvcConfigurer corsConfigurer(){
+		return new WebMvcConfigurer(){
+
+			public void addCorsMappings(CorsRegistry registry){
+				registry.addMapping("/**")
+						.allowedOrigins("http://localhost:4200")
+						.allowedMethods("GET", "POST", "PUT", "DELETE")
+						.allowedHeaders("*")
+						.allowCredentials(true);
+			}
+		};
 	}
 }

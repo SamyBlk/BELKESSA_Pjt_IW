@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AvailabilityService {
-  private apiUrl = 'http://localhost:8088/availabilities';
+  private apiUrl = 'http://localhost:8082/availabilities';
 
   constructor(private http: HttpClient) {}
 
