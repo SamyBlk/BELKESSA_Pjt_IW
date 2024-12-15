@@ -9,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/availabilities")
+@CrossOrigin(origins = "http://localhost:4200")
 public class AvailabilityController {
     @Autowired
     private AvailabilityRepository availabilityRepository;

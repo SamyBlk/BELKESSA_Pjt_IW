@@ -20,5 +20,6 @@ public class Users {
     private Long id;
     private String name;
     private String email;
+    private String password;
     private Role role; // Client ou Professionnel
 }

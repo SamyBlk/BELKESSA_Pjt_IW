@@ -9,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/appointments")
+@CrossOrigin(origins = "http://localhost:4200")
 public class AppointmentController {
     @Autowired
     private AppointmentRepository appointmentRepository;
@@ -29,9 +30,14 @@ public class AppointmentController {
     }
 
     @PostMapping
-    public Appointment createAppointment(@RequestBody Appointment appointment) {
+    public Appointment bookAppointment(@RequestBody Appointment appointment) {
         return appointmentRepository.save(appointment);
     }
+
+    /*@PostMapping
+    public Appointment createAppointment(@RequestBody Appointment appointment) {
+        return appointmentRepository.save(appointment);
+    }*/
 
     @PutMapping("/{id}")
     public Appointment updateAppointment(@PathVariable Long id, @RequestBody Appointment appointmentDetails) {
@@ -42,7 +48,12 @@ public class AppointmentController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteAppointment(@PathVariable Long id) {
+    public void cancelAppointment(@PathVariable Long id) {
         appointmentRepository.deleteById(id);
     }
+
+    /*@DeleteMapping("/{id}")
+    public void deleteAppointment(@PathVariable Long id) {
+        appointmentRepository.deleteById(id);
+    }*/
 }

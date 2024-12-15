@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/users")
+@CrossOrigin(origins = "http://localhost:4200")
 public class UserController {
     @Autowired
     private UserRepository userRepository;
@@ -20,9 +21,25 @@ public class UserController {
     }
 
     @PostMapping
-    public Users createUser(@RequestBody Users user) {
+    public Users registerUser(@RequestBody Users user) {
         return userRepository.save(user);
     }
+
+    @PostMapping("/login")
+    public Users loginUser(@RequestBody Users user) {
+        Users existingUser = userRepository.findByNameAndPassword(user.getName(), user.getPassword());
+        if (existingUser != null) {
+            return existingUser;
+        } else {
+            throw new RuntimeException("Invalid credentials");
+        }
+    }
+
+
+    /*@PostMapping
+    public Users createUser(@RequestBody Users user) {
+        return userRepository.save(user);
+    }*/
 
     @GetMapping("/{id}")
     public ResponseEntity<Users> getUserById(@PathVariable Long id) {

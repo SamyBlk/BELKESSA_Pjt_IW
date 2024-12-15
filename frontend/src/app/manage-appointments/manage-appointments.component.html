@@ -1,0 +1,8 @@
+<h2>Manage Appointments</h2>
+<ul>
+  <li *ngFor="let appointment of appointments">
+    {{ appointment.appointmentTime }} - {{ appointment.status }}
+    <button *ngIf="appointment.status === 'PENDING'" (click)="confirmAppointment(appointment.id)">Confirm</button>
+    <button (click)="cancelAppointment(appointment.id)">Cancel</button>
+  </li>
+</ul>

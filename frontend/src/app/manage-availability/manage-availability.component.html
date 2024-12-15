@@ -1,0 +1,17 @@
+<h2>Manage Availability</h2>
+<form (ngSubmit)="addAvailability()">
+  <label for="startTime">Start Time:</label>
+  <input type="datetime-local" id="startTime" [(ngModel)]="newAvailability.startTime" name="startTime" required>
+
+  <label for="endTime">End Time:</label>
+  <input type="datetime-local" id="endTime" [(ngModel)]="newAvailability.endTime" name="endTime" required>
+
+  <button type="submit">Add Availability</button>
+</form>
+
+<ul>
+  <li *ngFor="let availability of availabilities">
+    {{ availability.startTime }} - {{ availability.endTime }}
+    <button (click)="deleteAvailability(availability.id)">Delete</button>
+  </li>
+</ul>
